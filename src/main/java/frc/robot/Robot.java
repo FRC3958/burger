@@ -23,11 +23,8 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
 
-    public static OI m_oi;
-    public static DriveTrain m_driveTrain;
-
-    Command m_autonomousCommand;
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    public static OI _oi;
+    public static DriveTrain _driveTrain;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -36,8 +33,8 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
 
-        m_oi = new OI();
-        m_driveTrain = new DriveTrain();
+        _oi = new OI();
+        _driveTrain = new DriveTrain();
     }
 
     /**
@@ -81,19 +78,12 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
-        m_autonomousCommand = m_chooser.getSelected();
-
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
          * switch(autoSelected) { case "My Auto": autonomousCommand = new
          * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
          * ExampleCommand(); break; }
          */
-
-        // schedule the autonomous command (example)
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.start();
-        }
     }
 
     /**
@@ -110,9 +100,6 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.cancel();
-        }
     }
 
     /**

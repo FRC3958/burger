@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import frc.robot.RobotMap;
 
+import frc.robot.commands.driving.*;
+
 /**
  * Add your docs here.
  */
@@ -43,11 +45,14 @@ public class DriveTrain extends Subsystem implements PIDOutput {
          */
 
         _flTalon = new WPI_TalonSRX(RobotMap.DT_FL_TALON);
+        _flTalon.setInverted(true);
         _blTalon = new WPI_TalonSRX(RobotMap.DT_BL_TALON);
         _leftSpeedController = new SpeedControllerGroup(_flTalon, _blTalon);
 
         _frTalon = new WPI_TalonSRX(RobotMap.DT_FR_TALON);
+        _frTalon.setInverted(true);
         _brTalon = new WPI_TalonSRX(RobotMap.DT_BR_TALON);
+        _brTalon.setInverted(true);
         _rightSpeedController = new SpeedControllerGroup(_frTalon, _brTalon);
 
         _differentialDrive = new DifferentialDrive(_leftSpeedController, _rightSpeedController);
@@ -64,18 +69,23 @@ public class DriveTrain extends Subsystem implements PIDOutput {
         _pidController.setAbsoluteTolerance(5);
         _pidController.setContinuous(true);
 
-        LiveWindow.addActuator("DriveTrain", "PIDController", _pidController);
+        // LiveWindow.addActuator("DriveTrain", "PIDController", _pidController);
     }
 
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DrivingGroup());
     }
 
     @Override
     public void pidWrite(double output) {
         _leftSpeedController.set(output);
-        _rightSpeedController.set(output);
+        _rightSpeedController.set(-output);
+    }
+
+    public DifferentialDrive getDifferentialDrive() {
+        return _differentialDrive;
     }
 }
