@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ShootBall;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,10 +28,15 @@ public class OI {
     public OI() {
         _driverController = new XboxController(0);
         _operatorController = new XboxController(1);
+
+        _shootButton = new JoystickButton(_driverController, 0);
+        _shootButton.whenPressed(new ShootBall());
     }
 
     private XboxController _driverController;
     private XboxController _operatorController;
+
+    private JoystickButton _shootButton;
 
     public XboxController getDriverController() {
         return _driverController;

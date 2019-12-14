@@ -19,4 +19,5 @@ public class RobotMap {
     public static final int DT_FR_TALON = 7; // temp being swapped with id 2
     public static final int DT_BL_TALON = 6;
     public static final int DT_BR_TALON = 1;
+    public static final int wheeler = 8;
 }

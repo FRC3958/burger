@@ -8,11 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.FlyWheel;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +23,7 @@ public class Robot extends TimedRobot {
 
     public static OI _oi;
     public static DriveTrain _driveTrain;
+    public static FlyWheel _flyWheel;
 
     /**
      * This function is run when the robot is first started up and should be used
