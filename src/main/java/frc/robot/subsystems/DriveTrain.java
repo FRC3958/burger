@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.PIDController;
@@ -30,13 +30,13 @@ public class DriveTrain extends Subsystem implements PIDOutput {
     private SpeedControllerGroup _leftSpeedController, _rightSpeedController;
     private DifferentialDrive _differentialDrive;
 
-    private PIDController _pidController;
-    private AHRS _ahrs;
+    // private PIDController _pidController;
+    // private AHRS _ahrs;
 
-    static final double kP = 0.05;
-    static final double kI = 0;
-    static final double kD = 0;
-    static final double kF = 0;
+    // static final double kP = 0.05;
+    // static final double kI = 0;
+    // static final double kD = 0;
+    // static final double kF = 0;
 
     public DriveTrain() {
 
@@ -61,13 +61,13 @@ public class DriveTrain extends Subsystem implements PIDOutput {
          * Epic PIDs (so epic)
          */
 
-        _ahrs = new AHRS(SPI.Port.kMXP);
+        // _ahrs = new AHRS(SPI.Port.kMXP);
 
-        _pidController = new PIDController(kP, kI, kD, _ahrs, this);
-        _pidController.setInputRange(-180, 180);
-        _pidController.setOutputRange(0, 1);
-        _pidController.setAbsoluteTolerance(5);
-        _pidController.setContinuous(true);
+        // _pidController = new PIDController(kP, kI, kD, _ahrs, this);
+        // _pidController.setInputRange(-180, 180);
+        // _pidController.setOutputRange(0, 1);
+        // _pidController.setAbsoluteTolerance(5);
+        // _pidController.setContinuous(true);
 
         // LiveWindow.addActuator("DriveTrain", "PIDController", _pidController);
     }
